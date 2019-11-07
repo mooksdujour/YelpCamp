@@ -12,10 +12,16 @@ const express               = require("express"),
       Comment               = require("./models/comment"),
       seedDB                = require("./seeds");
 
+//Changes to bypass time out db connection errors on Heroku
+const host = '0.0.0.0',
+      port = process.env.PORT || 3000;
+
 //requiring routes
 const commentRoutes    = require("./routes/comments"),
       campgroundRoutes = require("./routes/campgrounds"),
       indexRoutes      = require("./routes/index")
+
+
  
 //mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect('mongodb+srv://TheMooGuy:%21amLook1ng@cluster0-miakj.mongodb.net/test?retryWrites=true&w=majority', {
@@ -61,6 +67,6 @@ app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-app.listen(3000, process.env.IP, () =>{
-	console.log("The YelpCamp server has started!!!");
+app.listen(port, host, () =>{
+	console.log("Server has started....");
 });
