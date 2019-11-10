@@ -14,7 +14,8 @@ const express               = require("express"),
 
 //Changes to bypass time out db connection errors on Heroku
 const host = '0.0.0.0',
-      port = process.env.PORT || 3000;
+      port = process.env.PORT || 3000,
+      url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
 
 //requiring routes
 const commentRoutes    = require("./routes/comments"),
@@ -24,7 +25,8 @@ const commentRoutes    = require("./routes/comments"),
 
  
 //mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect('mongodb+srv://TheMooGuy:%21amLook1ng@cluster0-miakj.mongodb.net/test?retryWrites=true&w=majority', {
+//mongoose.connect('mongodb+srv://TheMooGuy:%21amLook1ng@cluster0-miakj.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
