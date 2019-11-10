@@ -21,11 +21,7 @@ const host = '0.0.0.0',
 const commentRoutes    = require("./routes/comments"),
       campgroundRoutes = require("./routes/campgrounds"),
       indexRoutes      = require("./routes/index")
-
-
  
-//mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect('mongodb+srv://TheMooGuy:%21amLook1ng@cluster0-miakj.mongodb.net/test?retryWrites=true&w=majority', {
 mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true,
